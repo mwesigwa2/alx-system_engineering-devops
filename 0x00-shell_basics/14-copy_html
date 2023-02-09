@@ -1,2 +1,2 @@
 #!/bin/bash
-if [./*.html -nt ../*.html ] cp *.html .. elif [./*html !-e ..] cp *.html ..
+if [*.html -nt .. ]; then cp *.html .. elif [./*html !-e ..]; then cp *.html ..
