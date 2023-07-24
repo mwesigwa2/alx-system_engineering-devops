@@ -1,8 +1,8 @@
-#Command line for the win
+# Command line for the win
 This is a project testing the knowledge on how to use the command line.
 The files created are to be uploaded on to the sandbox using the SFTP command line tool
 
-##SFTP Command line tool
+## SFTP Command line tool
 This was used to upload the screenshots taken during the project to the sandbox
 Below are the steps taken to upload from local machine to the sandbox
 * Run the terminal on the local machine(CMD - for windows)
