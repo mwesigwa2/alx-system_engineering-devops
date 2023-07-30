@@ -1,4 +1,5 @@
-sh script that displays To infinity and beyond indefinitely
+#!/usr/bin/env bash
+#bash script that displays To infinity and beyond indefinitely
 #receives a sigterm
 
 trap "echo 'I am invincible!!!'" 15
