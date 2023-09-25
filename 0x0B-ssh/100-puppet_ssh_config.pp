@@ -5,7 +5,7 @@
 file {'/etc/ssh/ssh_config':
 	ensure	=> present,
 	content	=> @(EOF),
-		Host*
+		Host *
 			PasswordAuthentication no
 			IdentityFile ~/.ssh/school
 EOF
