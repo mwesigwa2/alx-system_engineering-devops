@@ -1,22 +1,28 @@
 #!/usr/bin/env bash
-# This script configures Nginx for a permanent redirection
+# This script configuring Nginx for a permanent redirection
 
-sudo apt update
-sudo apt install -y nginx
-sudo ufw allow 'Nginx HTTP'
-echo "Hello World!" | sudo tee /var/www/html/index.html
+sudo apt-get -y update
+sudo apt-get -y install nginx
+echo 'Hello World!' | sudo tee /var/www/html/index.html
+sudo service nginx start
 
-echo "server {
-	listen 80 default_server;
-        listen [::]:80 default_server;
 
+# Configure Nginx for redirection
+cat <<EOF | sudo tee /etc/nginx/sites-available/default > /dev/null
+server {
+    listen 80;
+
+    server_name _;
+
+    location / {
+        if (\$request_uri = "/redirect_me") {
+            return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+        }
         root /var/www/html;
         index index.html;
+    }
+}
+EOF
 
-        location /redirect_me {
-                return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
-        }
-}" > default
-
-sudo mv -f default /etc/nginx/sites-available/default
-sudo service nginx restart
+# Restart Nginx
+sudo systemctl restart nginx
